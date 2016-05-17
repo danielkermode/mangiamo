@@ -4,3 +4,4 @@ This is a remake of a simple node server I had made. I reimplemented the server 
 ```npm i``` needs to be run in the client folder to get all the npm deps.
 
 I should keep a note: the scripts in package.json are intended to be run on windows (for example ```del``` is used instead of ```rm```).
+
