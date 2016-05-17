@@ -6,7 +6,7 @@ module.exports = {
   './index.jsx' // Your appʼs entry point
   ],
   output: {
-    path: path.join(__dirname, 'public'),
+    path: path.normalize(__dirname + '/../public'),
     filename: 'bundle.js',
     publicPath: '/'
   },
@@ -23,7 +23,7 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: './public'
+    contentBase: '../public'
   },
   plugins: [
   ]

@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const filePath = path.normalize(__dirname + '/public/index.html');
+const filePath = path.normalize(__dirname + '/../public/index.html');
 const regex = process.argv[2] === 'dev'? /bundle.min.js/ : /bundle.js/;
 const replacement = process.argv[2] === 'dev'? 'bundle.js' : 'bundle.min.js';
 

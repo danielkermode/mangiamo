@@ -1,6 +1,1 @@
-client/.babelrc
-client/components
-client/app.jsx
-client/builder.js
-client/package.json
-client/webpack.config.js
+/client
