@@ -7,8 +7,8 @@
     "node": "6.0.0"
   },
   "scripts": {
-    "cbuild": "webpack --progress --profile --colors && cd public && minify bundle.js && del bundle.js",
-    "cdev": "webpack && webpack-dev-server --hot --inline",
+    "cbuild": "node builder.js prod && webpack --progress --profile --colors && cd public && minify bundle.js && del bundle.js",
+    "cdev": "node builder.js dev && webpack && webpack-dev-server --hot --inline",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "danielkermode",

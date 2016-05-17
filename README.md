@@ -5,3 +5,5 @@ This is a remake of a simple node server I had made. I reimplemented the server 
 
 I should keep a note: the scripts in package.json are intended to be run on windows (for example ```del``` is used instead of ```rm```).
 
+The .slugignore file keeps a record of what is only being used as part of the build process, and not in the final app. It tells the slug compiler in Heroku to ignore those files (to keep the slug size down, as this is really just a Go application).
+
