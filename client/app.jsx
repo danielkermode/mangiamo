@@ -85,6 +85,7 @@ export class App extends Component {
         <hr/>
         {this.state.noRec && <div className='alert alert-warning'>Sorry, couldn't find a recipe for that.</div>}
         {this.state.recipe && <Recipe recipe={this.state.recipe}/>}
+        <br/>
       </div>
     );
   }
