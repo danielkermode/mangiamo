@@ -29,7 +29,10 @@ export class App extends Component {
       return data.json();
     })
     .then((data) => {
-      if(data.Count == 0) this.setState({ noRec: true });
+      if(data.Count == 0) {
+        this.setState({ noRec: true, recipe: {}, getting: false });
+        return;
+      }
       let recInd = randInt(0, data.Count - 1);
       if(data.Recipes[recInd].Title == this.state.recipe.title && data.Count > 1) {
         recInd = getNewInd(recInd, 0, data.Count - 1);
