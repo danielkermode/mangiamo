@@ -34,7 +34,7 @@ export class App extends Component {
         return;
       }
       let recInd = randInt(0, data.Count - 1);
-      if(data.Recipes[recInd].Title == this.state.recipe.title && data.Count > 1) {
+      if(data.Recipes[recInd].Title == this.state.recipe.Title && data.Count > 1) {
         recInd = getNewInd(recInd, 0, data.Count - 1);
       }
       this.setState({ recipe: data.Recipes[recInd], getting: false });
