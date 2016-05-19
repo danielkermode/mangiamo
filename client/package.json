@@ -8,7 +8,7 @@
   },
   "scripts": {
     "cbuild": "node builder.js prod && webpack --progress --profile --colors && cd ../public && minify bundle.js && del bundle.js",
-    "buildlin": "cd .. && cmd /C \"set GOOS=linux&& set GOARCH=arm&& go build\" && MOVE mangiamo public",
+    "buildlin": "cd .. && cmd /C \"set GOOS=linux&& set GOARCH=amd64&& go build\" && MOVE mangiamo public",
     "cdev": "node builder.js dev && webpack && webpack-dev-server --hot --inline",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
