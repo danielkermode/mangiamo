@@ -63,8 +63,8 @@ export class App extends Component {
         <div className='well'>
           <p>
           You're hungry but you simply can't decide what to eat. Sound familiar? Well you're in luck. Let Mangiamo
-          decide for you! Simply enter some ingredients you like the sound of (or just try your luck without any) and a recipe will
-          be generated for you. If you don't like it, <i>nessun problema!</i> Just click the button to get another
+          decide for you! Simply enter some ingredients you like the sound of separated with only a space (or just try your luck without any)
+          and a recipe will be generated for you. If you don't like it, <i>nessun problema!</i> Just click the button to get another
           recipe that fits your needs.
           </p>
           <p>
