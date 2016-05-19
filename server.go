@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"mangiamo/gzipper"
 	"mangiamo/recipeJson"
 	"net/http"
 	"net/url"
@@ -54,7 +55,6 @@ func dataHandler(w http.ResponseWriter, r *http.Request) {
 	j, _ := json.Marshal(resp)
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(j)
-	return
 }
 
 func errorHandler(w http.ResponseWriter, r *http.Request, status int) {
@@ -73,9 +73,9 @@ func main() {
 	for i, file := range resfiles {
 		resfiles[i] = reg.ReplaceAllString(file, "/")
 	}
-	http.HandleFunc("/", homeHandler)
-	http.HandleFunc("/resources/", resHandler)
-	http.HandleFunc("/data/", dataHandler)
+	http.HandleFunc("/", gzipper.MakeHandler(homeHandler))
+	http.HandleFunc("/resources/", gzipper.MakeHandler(resHandler))
+	http.HandleFunc("/data/", gzipper.MakeHandler(dataHandler))
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "3000"
