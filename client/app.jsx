@@ -18,29 +18,30 @@ export class App extends Component {
       ingreds: '',
       recipe: {},
       noRec: false,
-      getting: false
+      getting: false,
+      got: false
     };
   }
 
   getRecipe = () => {
-    this.setState({ getting: true, noRec: false });
+    this.setState({ getting: true, noRec: false, recipe: {} });
     fetch('data/' + this.state.ingreds)
     .then((data) => {
       return data.json();
     })
     .then((data) => {
       if(data.Count == 0) {
-        this.setState({ noRec: true, recipe: {}, getting: false });
+        this.setState({ noRec: true, recipe: {}, getting: false, got: false });
         return;
       }
       let recInd = randInt(0, data.Count - 1);
       if(data.Recipes[recInd].Title == this.state.recipe.Title && data.Count > 1) {
         recInd = getNewInd(recInd, 0, data.Count - 1);
       }
-      this.setState({ recipe: data.Recipes[recInd], getting: false });
+      this.setState({ recipe: data.Recipes[recInd], getting: false, got: true });
     })
     .catch((error) => {
-      this.setState({ getting: false })
+      this.setState({ getting: false, got: false })
       console.log(error);
     });
   };
@@ -64,7 +65,7 @@ export class App extends Component {
           <p>
           You're hungry but you simply can't decide what to eat. Sound familiar? Well you're in luck. Let Mangiamo
           decide for you! Simply enter some ingredients you like the sound of separated with only a space (or just try your luck without any)
-          and a recipe will be generated for you. If you don't like it, <i>nessun problema!</i> Just click the button to get another
+          and a recipe will be generated for you. If you don't like it, <i>nessun problema!</i> Just click the button to get a different
           recipe that fits your needs.
           </p>
           <p>
@@ -76,7 +77,11 @@ export class App extends Component {
           <input onKeyDown={this.onEnter} onChange={this.handleChange} type='text' placeholder='Enter ingredients' />
           <br/>
           <br/>
-          <button className='btn btn-primary' onClick={this.getRecipe}>Let's eat!</button>
+          <button className='btn btn-lg btn-primary' onClick={this.getRecipe}>
+          {this.state.got ?
+          "Give me another one!" :
+          "Let's eat!"}
+          </button>
         </div>
         {this.state.getting &&
           <div className='sk-folding-cube'>
@@ -87,7 +92,7 @@ export class App extends Component {
           </div>}
         <hr/>
         {this.state.noRec && <div className='alert alert-warning'>Sorry, couldn't find a recipe for that.</div>}
-        {this.state.recipe && <Recipe recipe={this.state.recipe}/>}
+        <Recipe recipe={this.state.recipe}/>
         <br/>
       </div>
     );
